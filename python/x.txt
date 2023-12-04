@@ -1,0 +1,96 @@
+[(6,8),(6,-8)]
+['Espanha', 4, 1, 0, 5, 1]
+['Franca', 4, 1, 1, 5, 1]
+['Espanha', 4, 1, 0, 5, 1]
+O primeiro critério é o número de pontos. Um time que fez mais pontos,
+obviamente, estará melhor classificado que os times com menor número
+de pontos. Um time marca 3 pontos quando obtém uma vitória e 1 ponto
+quando obtém um empate;
+O segundo critério é o número de vitórias.
+Se dois times tiverem o mesmo número de pontos,
+então o time que tiver mais
+vitórias estará melhor classificado;
+O terceiro critério é a diferença de gols
+. Se dois times empatarem nos critérios
+anteriores, então o time que tiver a maior
+diferença entre gols feitos e gols recebidos
+será melhor classificado;
+O quarto critério é o número de gols marcados. Se dois times
+ empatam em todos os critérios anteriores, então o time que marcou
+  mais gols será melhor classificado;
+O quinto critério é o número de partidas jogadas. Se dois times empatam em todos os critérios anteriores, então o time que realizou menos jogos até o momento será melhor classificado;
+O último critério é o nome do time. Se dois times estão iguais em todos os critérios, então o time com nome de menor ordem lexicográfica estará melhor classificado.
+['Franca', 4, 1, 1, 5, 1]
+['Espanha', 4, 1, 0, 5, 1]
+['Brasil', 4, 1, 2, 7, 2]
+['Uruguai', 4, 1, 1, 6, 1]
+
+print("{} - {}: {} pontos, {} jogos ({}-{}-{}), d.g. {} ({}-{})".format(
+              #posição na tabela
+            , #nome do time
+            , #pontuação do time
+            , #partidas jogadas
+            , #vitórias
+            , #empates
+            , #derrotas
+            , #saldo de gols
+            , #gols marcados
+            , #gols recebidos
+        ))
+4
+['Alemanha', 0, 1, 1, 2, 3]
+['Espanha', 1, 0, 1, 8, 1]
+['Costa Rica', 1, 0, 1, 1, 7]
+['Japao', 1, 0, 1, 2, 2]
+
+        if outro.numVitorias < self.numVitorias:
+            flagself+=100
+        elif outro.numVitorias == self.numVitorias:
+            flagself+=100
+            flagoutro+=100
+        else:
+            flagoutro+=100
+        
+        if outro.diferencaGols < self.diferencaGols:
+            flagoutro+=50
+        elif outro.diferencaGols == self.diferencaGols:
+            flagself+=50
+            flagoutro+=50
+        else:
+            flagself+=50
+            
+        
+        if outro.golsPositivo < self.golsPositivo:
+            flagself+=25
+        elif outro.golsPositivo == self.golsPositivo:
+            flagself+=25
+            flagoutro+=25
+        else:
+            flagoutro+=25
+
+        if outro.partidasJogadas < self.partidasJogadas:
+            flagself+=12
+        elif outro.partidasJogadas == self.partidasJogadas:
+            flagself+=12
+            flagoutro+=12
+        else:
+            flagoutro+=12
+        
+        if outro.OrdemNome < self.OrdemNome:
+            flagself+=6
+        else:
+            flagoutro+=6
+
+
+
+    def __lt__(self,outro):
+        if self.QuantidadeDeAtaque!=outro.QuantidadeDeAtaque:
+            return self.QuantidadeDeAtaque<outro.QuantidadeDeAtaque and self.QuantidadeDeDefesa>outro.QuantidadeDeDefesa      
+        elif self.QuantidadeDeAtaque==outro.QuantidadeDeAtaque and self.QuantidadeDeDefesa!=outro.QuantidadeDeDefesa:
+            return self.proporcaoSeXigual>outro.proporcaoSeXigual
+        elif self.QuantidadeDeDefesa==outro.QuantidadeDeDefesa and self.QuantidadeDeAtaque!=outro.QuantidadeDeAtaque:
+            return self.QuantidadeDeAtaque<outro.QuantidadeDeAtaque
+        elif self.QuantidadeDeAtaque==outro.QuantidadeDeAtaque and self.QuantidadeDeDefesa==outro.QuantidadeDeDefesa:
+            return self.QuantidadeDeAtaque<outro.QuantidadeDeAtaque
+        else:
+            return self.QuantidadeDeAtaque<outro.QuantidadeDeAtaque and self.QuantidadeDeDefesa>outro.QuantidadeDeDefesa
